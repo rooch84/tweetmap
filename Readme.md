@@ -17,4 +17,4 @@ ACCESS_TOKEN_SECRET
 
 ## To run from docker
 
-Don't clone this repo, instead clone [this one]() and run `docker-compose up` from the project root.
+Don't clone this repo, instead clone [this one](https://github.com/rooch84/tweetmap-docker) and run `docker-compose up` from the project root.
