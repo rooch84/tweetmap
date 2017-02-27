@@ -64,7 +64,7 @@ Template.map.rendered = function() {
 
 	var map = L.map('map', {
 		doubleClickZoom: true
-	}).setView([ 37.7,-122.4], 1);
+	}).setView([ 25,15], 5);
 	L.tileLayer.bing("Arm0sEuJ1EZa0Z_utRK13DJdckI2d19FwjLsRdt3Pg7k2mAQmlB6d5KD_SMh7zS-").addTo(map);
 	markerGroup = L.layerGroup().addTo(map);
 }
