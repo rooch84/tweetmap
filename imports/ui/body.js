@@ -39,7 +39,7 @@ var tweetIcon = L.icon({
 
 Template.body.onCreated(function bodyOnCreated() {
 	Tweets.find().observeChanges({
-		changed: function (id) {
+		added: function (id) {
 			if(Tweets.findOne(id).coordinates != null) {
 				var marker = L.marker([Tweets.findOne(id).coordinates.coordinates[1], Tweets.findOne(id).coordinates.coordinates[0]],  {icon: tweetIcon}).addTo(markerGroup);
 				// wrapping node for bindPopup

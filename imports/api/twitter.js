@@ -7,27 +7,27 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+	Tweets = new Mongo.Collection("tweets", {connection: null});
+	var id;
 
-	var publish;
-	var id = "tweet";
+	id = Tweets.insert({});
 
 	Meteor.startup(function () {
 
 		var T = new Twit(getAuth())
 
 		Meteor.publish('tweets', function() {
-			publish = this;
-			publish.added("tweets", id, {});
-			publish.ready();
+			return Tweets.find();
+
+			//publish.ready();
 		});
 
 		var world = [ '-180', '-90', '180', '90' ];
 		var stream = T.stream('statuses/filter', { locations: world });
 
 		stream.on('tweet', Meteor.bindEnvironment(function (t) {
-			if (publish != null) {
-				publish.changed("tweets", id, t);
-			}
+			Tweets.remove(id);
+			id = Tweets.insert(t);
 		}))
 	})
 }
